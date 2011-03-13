@@ -31,7 +31,7 @@ int* get_matrix() {
 }
 
 int is_final_state(args_t* args, int state){ 
-	return args->states[state] == 2;
+	return args->states[state] == "e2";
 }
 
 int main(){
@@ -107,7 +107,7 @@ int main(){
         if (count > 0) {
         	fprintf(arq, " else {\n");
         }
-        if (i == is_final_state(&args, states[i])){
+        if (is_final_state(&args, i)){
         	fprintf(arq, "    sucesso();\n");
 			fprintf(arq, "    }\n");
 			fprintf(arq, "}\n");   
