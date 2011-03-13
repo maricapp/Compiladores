@@ -14,24 +14,24 @@ int* get_matrix() {
 
     if (matrix) {
         matrix[0] = 0;
-        matrix[1] = 1;
+        matrix[1] = -1;
         matrix[2] = 2;
         matrix[3] = -1;
-        matrix[4] = 2;
+        matrix[4] = -1;
         matrix[5] = -1;
         matrix[6] = 2;
         matrix[7] = 0;
         matrix[8] = -1;
         matrix[9] = 1;
-        matrix[10] = 1;
-        matrix[11] = 1;
+        matrix[10] = 2;
+        matrix[11] = -1;
     }
 
     return matrix;
 }
 
 int is_final_state(args_t* args, int state){ 
-	return args->states[state] == "e2";
+	return state == 2;
 }
 
 int main(){
