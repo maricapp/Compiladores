@@ -14,7 +14,7 @@ void erro();
 int main(void) {
     p = 0;
     printf("Sequencia:"); 
-    fgets(v, 8, stdin);
+    fgets(v, TAM, stdin);
     e0();
     return(0);
 }
@@ -38,9 +38,9 @@ void e0(){
 }
 
 void e1(){
-    if(v[p] == 'a'){ 
+    if(v[p] == 'b'){ 
         p++;
-        e0();
+        e2();
     } else 
         if(v[p] == 'c'){ 
         p++;
