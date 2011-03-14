@@ -4,12 +4,13 @@
 #include "make_with_funcs.h"
 
 void make_with_func(args_t* args, char* outfile){
-    
+   	      //cria arquivo 
+
+   	FILE * arq = fopen(outfile, "w");
     int i, j, count;
     
     if (get_args("test.auto", args)) {
-        //cria arquivo 
-		FILE * arq = fopen(outfile, "w");
+  
 		
 		//insere includes
 		fprintf(arq, "#include <stdio.h>\n");
@@ -49,7 +50,7 @@ void make_with_func(args_t* args, char* outfile){
 		    count = 0;
 		               
 		    for (j = 0; j < args->num_symbols; j++) {
-		        if (args.transitions[i + j * args->num_states] != -1) {
+		        if (args->transitions[i + j * args->num_states] != -1) {
 		            if (count > 0){
 		                fprintf(arq, " else \n");
 		                fprintf(arq, "        if(v[p] == '%c'){ \n", args->symbols[j]);
@@ -69,7 +70,7 @@ void make_with_func(args_t* args, char* outfile){
 		        fprintf(arq, " else {\n");
 		    }
 		        
-		    if (is_final_state(&args, i)){
+		    if (is_final_state(args, i)){
 		        fprintf(arq, "    sucesso();\n");
 		        fprintf(arq, "    }\n");
 		        fprintf(arq, "}\n");   
