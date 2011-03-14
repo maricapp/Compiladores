@@ -1,13 +1,19 @@
 #
 # Matches ab*
 #
-# > e0 -- a --> e1 -- b --> [e2]
-# // \ / \\ / \
-# /| | | |\ | |
-# | \ b,c / \ a / | \ a,b,c /
-# \ /
-# \ /
-# +------- c -------+
+#     > e0 -- a --> e1 -- b --> [e2]
+#   //     \     /     \\     /       \
+#  /|       |   |       |\   |         |
+# |  \ b,c /     \  a  /  |   \ a,b,c /
+#  \                     /
+#   \                   /
+#    +------- c -------+
+
+# Mode
+# 1 -> goto only
+# 2 -> func only
+# 3 -> goto and func
+1
 
 # States
 e0 e1 (e2)
@@ -16,6 +22,6 @@ e0 e1 (e2)
 a b c
 
 # Transitions
-e1 e0 e0
-e1 -1 e0
-e2 e2 e2
+e1  e8  e0
+e1  e2  e0
+e2  e2  e2

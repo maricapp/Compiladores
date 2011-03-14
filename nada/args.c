@@ -1,16 +1,15 @@
 /*
- * args.c
- *
- *  Created on: Mar 10, 2011
- *      Author: blabos
- */
+* args.c
+*
+* Created on: Mar 10, 2011
+* Author: blabos
+*/
 #include "args.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int get_mode(FILE* fp, args_t* args);
 int get_states(FILE* fp, args_t* args);
 int get_symbols(FILE* fp, args_t* args);
 int get_transitions(FILE* fp, args_t* args);
@@ -29,8 +28,7 @@ int get_args(char* filename, args_t* args) {
     int ret = 0;
 
     if ((fp = fopen(filename, "r")) != NULL) {
-        ret =  get_mode(fp, args)
-            && get_states(fp, args)
+        ret = get_states(fp, args)
             && get_symbols(fp, args)
             && get_transitions(fp, args);
         
@@ -43,7 +41,7 @@ int get_args(char* filename, args_t* args) {
 void print_args(args_t* args) {
     int i, j;
     
-    printf("\nSTATES:  %d/%d\n", args->num_fstates, args->num_states);
+    printf("\nSTATES: %d/%d\n", args->num_fstates, args->num_states);
     for (i = 0; i < args->num_states; i++) {
         if (is_final_state(args, i)) {
             printf("(%s), ", args->states[i]);
@@ -108,20 +106,6 @@ int is_final_state(args_t* args, int state) {
 }
 
 
-int get_mode(FILE* fp, args_t* args) {
-    char line[MAX_BUFF];
-    
-    // Copia a linha com o modo para o buffer line, ignornando comentários
-    // ( # ) e linhas em branco
-    do {
-        if (fgets(line, MAX_BUFF, fp) == NULL) return 0;
-    } while (_skip_line(line));
-    line[strlen(line) - 1] = '\0';
-    
-    args->mode = atoi(line);
-    
-    return 1;
-}
 
 int get_states(FILE* fp, args_t* args) {
     char line[MAX_BUFF];
@@ -244,7 +228,7 @@ int _num_states(char* buffer) {
         else goto _end_;
     
     // Caracter corrente é alfabético
-    // Achei o começo de um possivel token 
+    // Achei o começo de um possivel token
     _alpha_:
         count++;
         buffer++;
@@ -331,7 +315,7 @@ int _get_states(args_t* args, char* buffer) {
         }
     
     // Caracter corrente é alfabético
-    // Achei o começo de um possivel token 
+    // Achei o começo de um possivel token
     _alpha_:
         curr_char++;
         tk_size = 1;
