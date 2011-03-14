@@ -61,7 +61,12 @@ void print_args(args_t* args) {
     printf("\nTRANSITIONS:\n");
     for (i = 0; i < args->num_states; i++) {
         for (j = 0; j < args->num_symbols; j++) {
-            printf("%03d ", args->transitions[args->num_states * i + j]);
+            if (args->transitions[args->num_states * i + j] >= 0) {
+                printf("%03d ", args->transitions[args->num_states * i + j]);
+            }
+            else {
+                printf("--- ");
+            }
         }
         printf("\n");
     }
@@ -573,9 +578,7 @@ int _parse_line_transition(args_t* args, char* line, int curr_line) {
             memset(buffer, 0, MAX_BUFF);
             strncpy(buffer, line + i - 2, size);
             idx = state_index(args, buffer);
-            if (idx < 0) {
-                goto _error_;
-            }
+            idx = idx < 0 ? -1 : idx;
             
             args->transitions[curr_line * args->num_states + tokens] = idx;
             tokens++;
