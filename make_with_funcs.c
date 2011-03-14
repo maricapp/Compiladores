@@ -9,8 +9,7 @@ void make_with_func(args_t* args, char* outfile){
    	FILE * arq = fopen(outfile, "w");
     int i, j, count;
     
-    if (get_args("test.auto", args)) {
-  
+    if (get_args("test.auto", args)) {  
 		
 		//insere includes
 		fprintf(arq, "#include <stdio.h>\n");
