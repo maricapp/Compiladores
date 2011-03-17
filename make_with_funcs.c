@@ -3,9 +3,9 @@
 #include "args.h"
 #include "make_with_funcs.h"
 
-void make_with_func(args_t* args, char* outfile){
+int make_with_func(args_t* args, char* outfile){
 
-    FILE * arq 
+    FILE * arq;
     int i, j, count;
     int status = 0;
     
