@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "args.h"
 #include "make_with_funcs.h"
 
@@ -8,8 +10,12 @@ int make_with_func(args_t* args, char* outfile){
     FILE * arq;
     int i, j, count;
     int status = 0;
+    char filename[MAX_BUFF];
     
-    if((arq = fopen(outfile, "w")) != NULL ){
+    strncpy(filename, "func-", 6);
+    strncat(filename, outfile, MAX_BUFF - 6);
+    
+    if((arq = fopen(filename, "w")) != NULL ){
         
         //insere includes
         fprintf(arq, "#include <stdio.h>\n");

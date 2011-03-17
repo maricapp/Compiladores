@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
             make_with_jumps(&args, argv[2]);
         }
         
-        if (args.mode & 0x1) {
+        if (args.mode & 0x2) {
             make_with_func(&args, argv[2]);
         }
     }
